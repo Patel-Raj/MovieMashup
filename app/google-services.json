@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "45611471571",
+    "firebase_url": "https://moviemashup-aa0f5.firebaseio.com",
+    "project_id": "moviemashup-aa0f5",
+    "storage_bucket": "moviemashup-aa0f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45611471571:android:fb3df7abc91def45",
+        "android_client_info": {
+          "package_name": "com.example.patel.moviemashup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45611471571-netfvgf9a8s324at3ku551tq0hh9i7ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7SZ9x2P5gcKurR2FhowYt5A5DVI6puCU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

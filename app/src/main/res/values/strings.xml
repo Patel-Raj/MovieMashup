@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Movie Mashup</string>
+    <string name="Home">Home</string>
+    <string name="Movies">Movies</string>
+    <string name="TV">TV</string>
+    <string name="Celebs">Celebrities</string>
+    <string name="yourAccount">Your Account</string>
+    <string name="yourWatchList">Your Wathlist</string>
+    <string name="rating">Rating</string>
+    <string name="email_hint">Email Id</string>
+    <string name="pasword_hint">Password</string>
+    <string name="login_hint">LOGIN</string>
+    <string name="directionLogin">Not a Member yet? Sign Up here.</string>
+    <string name="signup_hint">SIGN UP</string>
+    <string name="directionSignup">Already a Member? Login here.</string>
+    <string name="showPassword">Show Password</string>
+    <string name="forgotPassword">Forgot Your Password?</string>
+    <string name="fullNameHint">Full Name</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="agreement">By Clicking Sign Up you agree all the Terms and Conditions.</string>
+    <string name="demandEmail">Please enter your Registered Email ID below :</string>
+    <string name="back">BACK</string>
+    <string name="submit">SUBMIT</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+</resources>
