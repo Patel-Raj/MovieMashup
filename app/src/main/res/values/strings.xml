@@ -24,5 +24,9 @@
     <string name="submit">SUBMIT</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="logout">Logout</string>
 
+    <string name="PRIFIX">https://api.themoviedb.org/3/</string>
+    <string name="API_KEY">856c5d9494aa6def37bbc042678115d4</string>
+    <string name="NOW_PLAYING">movie/now_playing</string>
 </resources>

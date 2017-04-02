@@ -1,4 +1,4 @@
-package com.example.patel.moviemashup;
+package com.example.patel.moviemashup.GeneralFiles;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.patel.moviemashup.GeneralFiles.LoginFragment;
+import com.example.patel.moviemashup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -60,13 +62,16 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
         fragmentManager = getActivity().getSupportFragmentManager();
     }
 
+    private void jumpToLogin(){
+        fragmentManager.beginTransaction().replace(R.id.frameContainer,new LoginFragment()).commit();
+    }
     @Override
     public void onClick(View localView) {
         if(localView== signupButton){
             registerUser();
         }
         else if(localView == login){
-            fragmentManager.beginTransaction().replace(R.id.frameContainer,new LoginFragment()).commit();
+            jumpToLogin();
         }
     }
     private void registerUser(){
@@ -88,6 +93,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     Toast.makeText(getActivity(),"Registered Success!",Toast.LENGTH_SHORT).show();
+                                    jumpToLogin();
                                 }
                                 else{
                                     Toast.makeText(getActivity(),"Registration Failed",Toast.LENGTH_SHORT).show();

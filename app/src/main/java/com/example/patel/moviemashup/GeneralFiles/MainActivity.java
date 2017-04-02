@@ -1,13 +1,12 @@
 /*
 * This is the First Page of the App and it contains the login, signup and Forget Password fragments.*/
-package com.example.patel.moviemashup;
+package com.example.patel.moviemashup.GeneralFiles;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+
+import com.example.patel.moviemashup.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
-        android:title="@string/Home"
-        android:icon="@drawable/ic_home_black_24dp"/>
-    <item
         android:id="@+id/movies"
+        android:onClick="menuClickHandling"
         android:title="@string/Movies"
         android:icon="@drawable/ic_movie_black_24dp"/>
     <item
         android:id="@+id/TV"
+        android:onClick="menuClickHandling"
         android:title="@string/TV"
         android:icon="@drawable/ic_tv_black_24dp"/>
     <item
         android:id="@+id/celebrities"
+        android:onClick="menuClickHandling"
         android:title="@string/Celebs"
         android:icon="@drawable/ic_people_black_24dp"/>
     <item
@@ -22,16 +21,24 @@
         <menu>
             <item
                 android:id="@+id/account"
+                android:onClick="menuClickHandling"
                 android:title="@string/yourAccount"
                 android:icon="@drawable/ic_account_box_black_24dp"/>
             <item
                 android:id="@+id/watchlist"
+                android:onClick="menuClickHandling"
                 android:title="@string/yourWatchList"
                 android:icon="@drawable/ic_watch_later_black_24dp"/>
             <item
                 android:id="@+id/rating"
+                android:onClick="menuClickHandling"
                 android:title="@string/rating"
                 android:icon="@drawable/ic_star_rate_black_18dp"/>
+            <item
+                android:id="@+id/logout"
+                android:onClick="menuClickHandling"
+                android:title="@string/logout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"/>
         </menu>
     </item>
 </menu>
