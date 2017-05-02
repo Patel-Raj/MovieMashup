@@ -8,10 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.patel.moviemashup.AllFragments.MoviePage;
+import com.example.patel.moviemashup.MovieFiles.MoviePage;
 import com.example.patel.moviemashup.CelebritiesFiles.CelebritiesActivity;
 import com.example.patel.moviemashup.R;
 import com.example.patel.moviemashup.TVFiles.TvActivity;
+import com.example.patel.moviemashup.WatchList.YourWatchList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -75,11 +76,8 @@ public class BaseActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this,CelebritiesActivity.class));
                 break;
-            case R.id.account:
-                break;
             case R.id.watchlist:
-                break;
-            case R.id.rating:
+                startActivity(new Intent(this,YourWatchList.class));
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();

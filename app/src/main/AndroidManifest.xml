@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllFragments.MoviePage" />
+        <activity android:name=".MovieFiles.MoviePage" />
         <activity android:name=".GeneralFiles.BaseActivity" />
         <activity android:name=".GeneralFiles.MainActivity" />
         <!--
@@ -29,11 +29,22 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".TVFiles.TvActivity" />
-        <activity android:name=".CelebritiesFiles.CelebritiesActivity" />
-        <activity android:name=".AllFragments.MovieDetails" />
-        <activity android:name=".TVFiles.TVDetails" />
-        <activity android:name=".CelebritiesFiles.CelebritiesDetails"></activity>
+        <activity
+            android:name=".TVFiles.TvActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".CelebritiesFiles.CelebritiesActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".MovieFiles.MovieDetails"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".TVFiles.TVDetails"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".CelebritiesFiles.CelebritiesDetails"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".WatchList.YourWatchList"></activity>
     </application>
 
 </manifest>

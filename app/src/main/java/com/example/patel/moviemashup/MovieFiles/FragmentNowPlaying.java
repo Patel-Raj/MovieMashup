@@ -1,4 +1,4 @@
-package com.example.patel.moviemashup.AllFragments;
+package com.example.patel.moviemashup.MovieFiles;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,8 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 

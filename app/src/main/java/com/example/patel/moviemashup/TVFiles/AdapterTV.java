@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.patel.moviemashup.AllFragments.MovieDetails;
 import com.example.patel.moviemashup.GeneralFiles.VolleySingelton;
 import com.example.patel.moviemashup.R;
 

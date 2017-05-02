@@ -1,4 +1,4 @@
-package com.example.patel.moviemashup.AllFragments;
+package com.example.patel.moviemashup.MovieFiles;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:id="@+id/userEmail"
+            android:textColor="@color/primary_text"
+            android:text="patelraj22777@gmail.com"/>
+
+        <RatingBar
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:id="@+id/ratingBar2" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/userReview"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/whiteGreyish" />
+</LinearLayout>

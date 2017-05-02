@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "45611471571-mjv5ghsb6jahb2lfv2r69734pi6nucgn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.patel.moviemashup",
+            "certificate_hash": "0ea8bceb33e5c02210f3491ab6498b52d18d584c"
+          }
+        },
+        {
           "client_id": "45611471571-netfvgf9a8s324at3ku551tq0hh9i7ai.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45611471571-netfvgf9a8s324at3ku551tq0hh9i7ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

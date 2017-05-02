@@ -1,11 +1,15 @@
 package com.example.patel.moviemashup.CelebritiesFiles;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,46 +20,35 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.patel.moviemashup.GeneralFiles.BaseActivity;
+import com.example.patel.moviemashup.GeneralFiles.Review;
+import com.example.patel.moviemashup.GeneralFiles.ReviewList;
 import com.example.patel.moviemashup.GeneralFiles.VolleySingelton;
+import com.example.patel.moviemashup.MovieFiles.MovieDetails;
 import com.example.patel.moviemashup.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.AIRDATE;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.API_KEY;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.BACKGROUND_PATH;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.BACKSIZE;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.BIOGRAPHY;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.DOB;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.GENDER;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.GENRE;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.ID;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.IMAGE_PREFIX;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.LANGUAGE;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.NA;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.NAME;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.OVERVIEW;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.PERSON;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.POB;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.POPULARITY;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.POSTER_PATH;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.POSTER_SIZE;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.PREFIX;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.PROFILE_PATH;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.SEASONS;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.TV;
-import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.VOTE_AVERAGE;
-
-public class CelebritiesDetails extends BaseActivity {
+import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.*;
+public class CelebritiesDetails extends BaseActivity implements View.OnClickListener{
 
     private long currentId;
     private VolleySingelton volleySingelton;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
+    DatabaseReference reviewDatabase;
+    List<Review> reviewList;
+
 
     ImageView VbackgroundImage;
     ImageView VposterImage;
@@ -65,6 +58,12 @@ public class CelebritiesDetails extends BaseActivity {
     TextView Vgender;
     TextView VplaceOfBirth;
     TextView Vpopularity;
+    RatingBar VratingBar;
+    EditText Vreview;
+    Button VpostReview;
+    RecyclerView VrecyclerView;
+    ReviewList adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +73,11 @@ public class CelebritiesDetails extends BaseActivity {
         mDrawerLayout.addView(contentView, 0);
 
         initViews();
+        reviewList = new ArrayList<>();
+        VpostReview.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
         currentId = b.getLong("CID");
+        reviewDatabase = FirebaseDatabase.getInstance().getReference(Long.toString(currentId));
         volleySingelton = VolleySingelton.getsInstance();
         requestQueue = volleySingelton.getmRequestQueue();
         imageLoader = volleySingelton.getImageLoader();
@@ -90,6 +92,10 @@ public class CelebritiesDetails extends BaseActivity {
         Vgender  = (TextView) findViewById(R.id.gender);
         VplaceOfBirth = (TextView) findViewById(R.id.placeOfBirth);
         Vpopularity = (TextView) findViewById(R.id.popularity);
+        VratingBar = (RatingBar) findViewById(R.id.ratingBarC);
+        Vreview = (EditText) findViewById(R.id.reviewC);
+        VpostReview = (Button) findViewById(R.id.postReviewC);
+        VrecyclerView = (RecyclerView) findViewById(R.id.recycleListC);
     }
     public static String getRequestUrl(String movieId) {
         return PREFIX + PERSON +  movieId + API_KEY + LANGUAGE;
@@ -181,6 +187,53 @@ public class CelebritiesDetails extends BaseActivity {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        reviewDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                reviewList.clear();
+                for (DataSnapshot reviewSnapshot : dataSnapshot.getChildren()) {
+                    Review reviewNow = reviewSnapshot.getValue(Review.class);
+                    reviewList.add(reviewNow);
+                }
+                adapter = new ReviewList(getBaseContext(),reviewList);
+                VrecyclerView.setAdapter(adapter);
+                VrecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(CelebritiesDetails.this,"Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == VpostReview){
+            float ratingPosted = VratingBar.getRating();
+            String reviewPosted = Vreview.getText().toString().trim();
+            if(reviewPosted.length() == 0){
+                Toast.makeText(this,"Please Write Review",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user != null){
+                    String uname = user.getEmail();
+                    String id = reviewDatabase.push().getKey();
+                    Review review = new Review(id,uname,ratingPosted,reviewPosted);
+                    reviewDatabase.child(id).setValue(review);
+                    Toast.makeText(this,"Posted Success",Toast.LENGTH_SHORT).show();
+                    VratingBar.setRating(0);
+                    Vreview.setText("");
+                }
             }
         }
     }

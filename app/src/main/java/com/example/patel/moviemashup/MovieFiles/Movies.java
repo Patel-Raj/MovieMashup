@@ -1,7 +1,4 @@
-package com.example.patel.moviemashup.AllFragments;
-
-import java.util.ArrayList;
-import java.util.Date;
+package com.example.patel.moviemashup.MovieFiles;
 
 /**
  * Created by patel on 15-Feb-17.

@@ -15,14 +15,14 @@
         android:layout_height="match_parent"
         android:background="#CDDC39"
         android:orientation="vertical"
-        tools:context="com.example.patel.moviemashup.AllFragments.MovieDetails">
+        tools:context="com.example.patel.moviemashup.MovieFiles.MovieDetails">
 
         <ImageView
-            android:id="@+id/backgroundImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/imagenotavailable" />
+                android:id="@+id/backgroundImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/imagenotavailable" />
 
         <View
             android:layout_width="match_parent"
@@ -75,6 +75,22 @@
                     android:layout_margin="5dp"
                     android:textColor="@color/primary_text"
                     android:textSize="18sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/primary_text"
+                        android:textSize="18sp"
+                        android:text="Watchlist : "/>
+                    <ImageView
+                        android:id="@+id/watchlistImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/notadded"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -125,5 +141,82 @@
             android:textColor="@color/primary_text"
             android:textSize="20sp"  />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/whiteGreyish" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RATINGS"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:background="#6d4c41"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/whiteGreyish" />
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recycleList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/whiteGreyish" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:textColor="@color/primary_text"
+                android:text="Rate It : "
+                android:textSize="18sp"
+                />
+            <RatingBar
+                android:id="@+id/ratingBar123"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:textColor="@color/primary_text"
+                android:text="Review It : "
+                android:textSize="15sp"
+                android:layout_weight="2"
+                />
+            <EditText
+                android:id="@+id/review"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/postReview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Post"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

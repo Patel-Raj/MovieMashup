@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import com.example.patel.moviemashup.AllFragments.MoviePage;
+import com.example.patel.moviemashup.MovieFiles.MoviePage;
 import com.example.patel.moviemashup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

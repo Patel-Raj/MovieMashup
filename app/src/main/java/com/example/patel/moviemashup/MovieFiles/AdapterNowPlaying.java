@@ -1,4 +1,4 @@
-package com.example.patel.moviemashup.AllFragments;
+package com.example.patel.moviemashup.MovieFiles;
 
 import android.content.Context;
 import android.content.Intent;

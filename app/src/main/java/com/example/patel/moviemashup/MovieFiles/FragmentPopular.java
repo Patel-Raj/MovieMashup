@@ -1,4 +1,4 @@
-package com.example.patel.moviemashup.AllFragments;
+package com.example.patel.moviemashup.MovieFiles;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,13 +27,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-
 import static com.example.patel.moviemashup.GeneralFiles.TmdbStrings.*;
 /**
  * Created by patel on 29-Mar-17.
  */
 
-public class FragmentTopRated extends Fragment {
+public class FragmentPopular extends Fragment {
     private RecyclerView recyclerView;
     private VolleySingelton volleySingelton;
     private ImageLoader imageLoader;
@@ -54,8 +53,8 @@ public class FragmentTopRated extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_top_rated,container,false);
-        recyclerView = (RecyclerView) layout.findViewById(R.id.recycleList2);
+        View layout = inflater.inflate(R.layout.fragment_popular,container,false);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.recycleList3);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterNowPlaying = new AdapterNowPlaying(getActivity());
         recyclerView.setAdapter(adapterNowPlaying);
@@ -67,7 +66,7 @@ public class FragmentTopRated extends Fragment {
     }
 
     public static String getRequestUrl(int page) {
-        return PREFIX + TOPRATED +  API_KEY + LANGUAGE + PAGE + page;
+        return PREFIX + POPULAR +  API_KEY + LANGUAGE + PAGE + page;
     }
 
     private void sendJsonRequest(int p){
