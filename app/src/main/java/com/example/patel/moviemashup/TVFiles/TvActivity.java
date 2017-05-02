@@ -61,7 +61,7 @@ class MyTvAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         String tempTitle = new String();
         if(position == 0)
-            tempTitle = "On Air";
+            tempTitle = "On Air ";
         else if(position == 1)
             tempTitle = "Top Rated";
         else if(position == 2)
