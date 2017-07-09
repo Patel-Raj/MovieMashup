@@ -87,7 +87,7 @@ public class YourWatchList extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(YourWatchList.this,"Error",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(YourWatchList.this,"Error",Toast.LENGTH_SHORT).show();
             }
         });
     }
